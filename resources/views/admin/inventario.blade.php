@@ -13,6 +13,7 @@
 @stop
 
 @section('content')
+
     @livewire('show-inventario')
     
 @stop
@@ -22,5 +23,5 @@
 @stop
 
 @section('js')
-
+    
 @stop
