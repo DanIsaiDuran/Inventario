@@ -51,7 +51,7 @@
     </div>
 
     {{-- Modal productos --}}
-    <div class="modal fade" id="productoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="productoModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -66,31 +66,41 @@
                         <label class="form-label" for="nombre">Nombre</label>
                         <input
                             type="text"
-                            name="nombre"
                             class="form-control"
+                            wire:model="nombre"
                         />
                     </div>
+                    <div>
+                    </div>
+                    
                     <div class="col-12 col-md-3">
-                        <label class="form-label" for="nombre">Stock</label>
+                        <label class="form-label" for="stock">Stock</label>
                         <input
                             type="number"
                             name="stock"
                             class="form-control"
+                            wire:model="stock"
                         />
                     </div>
                     <div class="col-12 col-md-3">
-                        <label class="form-label" for="nombre">Precio</label>
+                        <label class="form-label" for="precio">Precio</label>
                         <input
                             type="number"
                             name="precio"
                             class="form-control"
+                            wire:model="precio"
                         />
                     </div>
                     
                     
                     <div class="col-12 col-md-12">
-                        <label class="form-label" for="nombre">Descripción</label>
-                        <textarea class="form-control"> </textarea>
+                        <label class="form-label" for="descripcion">Descripción</label>
+                        <textarea class="form-control" wire:model="descripcion"> </textarea>
+                    </div>
+
+                    <div class="col-12 col-md-12">
+                        <label class="form-label" for="imagen">Imagen</label>
+                        <input type="file" name="imagen" class="form-control" wire:model="imagen">
                     </div>
                     
                 </div>
@@ -98,7 +108,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" wire:click="save">
+                  Guardar
+                </button>
             </div>
           </div>
         </div>
