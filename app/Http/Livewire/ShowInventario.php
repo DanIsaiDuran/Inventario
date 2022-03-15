@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -19,6 +20,13 @@ class ShowInventario extends Component
         'stock' => 'required',
         'precio' => 'required'
     ];
+    protected $listeners = ['eliminarProducto' => 'eliminarProducto'];
+
+    public function resetInput()
+    {
+        $this->producto = new Producto();
+        $this->resetValidation();
+    }
 
     public function render()
     {
@@ -40,7 +48,17 @@ class ShowInventario extends Component
 
         $producto->save();
 
-        dd($producto);
+
+    }
+
+    public function eliminarProducto(Producto $producto)
+    {
+        $url = $producto->imagen;
+        Storage::delete($url);
+
+        $producto->delete();
+
+        $this->emit('productoEliminado');
     }
 
 }

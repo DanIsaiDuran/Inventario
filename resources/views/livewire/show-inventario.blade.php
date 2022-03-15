@@ -1,7 +1,7 @@
 <div>
     <div class="card  border-bottom p-2 ">
         <div id="header" class="d-flex flex-column flex-sm-row align-items-center text-center m-2">
-            <h4 class="mb-0 fw-bolder ps-2">Listado de productos</h4>
+            <h3 class="mb-0 fw-bolder ps-2">Listado de productos</h3>
             <div class="d-flex justify-content-end"></div>
             <button class="ml-auto p-2 btn btn-outline-primary round" data-toggle="modal" data-target="#productoModal">
                 <i class="fas fa-plus me-24"></i>
@@ -12,34 +12,26 @@
         @if ($productos->count())
         <table class="table">
             <thead>
-              <tr>
+              <tr class=" text-center">
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Cantidad</th>
-                <th scope="col"></th>
+                <th scope="col">Precio</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($productos as $producto)
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                <tr class=" text-center">
+                    <th scope="row">{{ $producto->id }}</th>
+                    <td>{{ $producto->nombre }}</td>
+                    <td>{{ $producto->descripcion }}</td>
+                    <td class=" ">{{ $producto->stock }}</td>
+                    <td>{{ $producto->precio }}</td>
+                    <td><button class="btn btn-primary btn-sm">Editar</button></td>
+                    <td><button class="btn btn-danger btn-sm" wire:click="$emit('confirmarProducto', {{ $producto }})">Eliminar</button></td>
                 @endforeach
               </tbody>
         </table>
