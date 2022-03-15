@@ -50,5 +50,9 @@
                 'Producto eliminado',
             )
         })
+
+        window.addEventListener('closeModal', event => {
+            $('.modal').modal('hide').data('bs.modal', null);              
+        })
     </script>
 @stop

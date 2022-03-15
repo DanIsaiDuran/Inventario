@@ -94,14 +94,18 @@
                         <label class="form-label" for="imagen">Imagen</label>
                         <input type="file" name="imagen" class="form-control" wire:model="imagen">
                     </div>
+
+                    <div wire:loading wire:target="imagen">
+                        <span>Imagen cargando...</span>
+                    </div>
                     
                 </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" wire:click="save">
-                  Guardar
+                <button  type="button" class="btn btn-primary" wire:click="save" wire:loading.attr="disabled" wire:target="save, imagen">
+                    Guardar
                 </button>
             </div>
           </div>

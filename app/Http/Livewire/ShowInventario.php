@@ -48,7 +48,8 @@ class ShowInventario extends Component
 
         $producto->save();
 
-
+        $this->reset('nombre', 'descripcion', 'stock', 'precio', 'imagen');
+        $this->dispatchBrowserEvent('closeModal');
     }
 
     public function eliminarProducto(Producto $producto)
