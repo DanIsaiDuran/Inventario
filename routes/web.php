@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('/inventario', [ProductoController::class, 'index'])->name('inventario')->middleware('can:isAdmin');
+    Route::get('/inventario', [ProductoController::class, 'index'])->name('inventario')->middleware('can:admin.inventario.index');
 
 });
 

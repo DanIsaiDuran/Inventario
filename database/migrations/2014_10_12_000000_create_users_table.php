@@ -23,12 +23,10 @@ return new class extends Migration
             $table->string('apellido_paterno')->nullable();
             $table->string('apellido_materno')->nullable();
             $table->integer('celular')->nullable();
-            $table->unsignedBigInteger('rol')->default(2);
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
 
-            $table->foreign('rol')->references('id')->on('rols')->onDelete('cascade');
         });
     }
 

@@ -30,8 +30,15 @@
                     <td>{{ $producto->descripcion }}</td>
                     <td class=" ">{{ $producto->stock }}</td>
                     <td>{{ $producto->precio }}</td>
-                    <td><button class="btn btn-primary btn-sm">Editar</button></td>
-                    <td><button class="btn btn-danger btn-sm" wire:click="$emit('confirmarProducto', {{ $producto }})">Eliminar</button></td>
+                    @can('admin.inventario.editar')
+                        <td><button class="btn btn-primary btn-sm">Editar</button></td>
+                    @endcan
+
+                    @can('admin.inventario.eliminar')
+                        <td><button class="btn btn-danger btn-sm" wire:click="$emit('confirmarProducto', {{ $producto }})">Eliminar</button></td>
+                    @endcan
+                    
+                    
                 @endforeach
               </tbody>
         </table>

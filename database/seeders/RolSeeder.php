@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rol;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RolSeeder extends Seeder
 {
@@ -14,7 +15,17 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        $rol = New Rol();  $rol->rol = "Admin"; $rol->save();
-        $rol = New Rol();  $rol->rol = "Usuario"; $rol->save();
+        $admin = Role::create(['name' => 'Admin']);
+        $puntoVenta = Role::create(['name' => 'PuntoVenta']);
+        $usuario = Role::create(['name' => 'Usuario']);
+
+        Permission::create(['name' => 'admin.inventario.index'])->syncRoles([$admin, $puntoVenta]);
+        Permission::create(['name' => 'admin.inventario.editar'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.inventario.crear'])->syncRoles([$admin]);
+        Permission::create(['name' => 'admin.inventario.eliminar'])->syncRoles([$admin]);
+
+        Permission::create(['name' => 'admin.usuarios'])->syncRoles([$admin]);
+
+        
     }
 }

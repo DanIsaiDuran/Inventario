@@ -269,19 +269,19 @@ return [
         ],
         
         ['header' => 'Administrador',
-         'can'    =>  'isAdmin',
+         'can'    =>  'admin.inventario.index',
         ],
         [
             'text'       => 'Inventario',
             'url'        => 'admin/inventario',
             'icon'       => 'fas fa-fw fa-box',
-            'can'    =>  'isAdmin',
+            'can'    =>  'admin.inventario.index',
         ],
         [
             'text'       => 'Usuarios',     
             'url'        => '#',
             'icon' => 'fas fa-fw fa-users',
-            'can'    =>  'isAdmin',
+            'can'    =>  'admin.usuarios',
         ],
         
     ],
